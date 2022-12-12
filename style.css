@@ -2,7 +2,7 @@
 
 main{
 	max-width: 1000px;
-	margin: 20px auto;
+	margin: auto;
 }
 header img{
 	margin: 0 auto;
@@ -16,12 +16,24 @@ body{
 	color: #e1c0a6;
 }
 .home-hero{
-	min-height: 200px;
-	background-image: url(images/homehero.jpg);
+	background: rgb(225,192,166);
+	background: radial-gradient(circle, rgba(225,192,166,1) 56%, rgba(218,117,38,1) 100%);
 	background-size: cover;
-	padding-top: 20px;
-	color: #e1c0a6;
-	text-shadow: 1px 1px 0 black;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	margin-bottom: 10px;
+
+}
+.home-hero h1{
+	color: #4a3c49;
+	font-size: 70px;
+}
+header{
+	max-height: 200px;
+}
+p.bigtext{
+	font-size: 20px;
+
 }
 
 footer{
@@ -47,12 +59,37 @@ a:active{
 	color: black;
 }
 
+.gallery .preview{
+    width:100%
+    height:auto;
+}
+
+.gallery .gallery-thumbnails img {
+    width:100px;
+    height:75px;
+    margin: 10px 10px 10px 0;
+}
+
+.gallery .gallery-thumbnails img:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.gallery .preview img#preview {
+    padding: 1px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
 
 						/*Navigtion bar stuff*/
 nav{
 	background-color: #4a3c49;
 	border-top: 2px solid gray;
 	border-bottom: 2px solid gray;
+	font-size: 25px;
 }
 nav ul{
 	list-style-type: none;

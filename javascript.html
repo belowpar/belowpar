@@ -5,7 +5,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="A simple game that shows profeciency in embedding javascript!">
-		<title>Peter Rodeheffer's Portfolio::Javascript Game Integration</title>
+		<title>Peter Rodeheffer's Portfolio-Lily Run Javascript Game</title>
+		<!-- Bootstrap Stylesheet-->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="style.css">
 		<style>
 	      canvas {
@@ -23,18 +26,23 @@
 		</header>
 
 		<nav>
-	  	<ul>
-	   		<li><a href="index.html">Home</a></li>
-	   		<li><a href="resume.html">Resume</a></li>
-	   		<li><a href="multimedia.html">Multimedia</a></li>
-	   		<li><a href="javascript.html">Javascript</a></li>
-	  	</ul>
+		  	<ul>
+		   		<li><a href="index.html">Home</a></li>
+		   		<li><a href="resume.html">Resume</a></li>
+		   		<li><a href="lily-gallery.html">Lily Gallery</a></li>
+		   		<li><a href="javascript.html">Javascript</a></li>
+		  	</ul>
 		</nav>
 
+
+		<div class="home-hero">
+			<h1>Lily Run JavaScript Game</h1>
+		</div>
+				
 		<main>
 			<!-- This is the HTMLcode. It will be in the <main> section of your website --> 
-		   <div id="game" ></div>
-		   <div class="game-controls">
+			<div id="game" ></div>
+			<div class="game-controls">
 		    	<button onmousedown="moveup()" onmouseup="movedown()">UP</button>
 				<button onmousedown="movedown()" onmouseup="moveup()">DOWN</button>
 				<button onmousedown="moveleft()" onmouseup="moveright()">LEFT</button>
@@ -51,7 +59,7 @@
 		      var myScore;
 		      
 		      function startGame() {
-		          myGamePiece = new component(30, 30, "purple", 10, 120);
+		          myGamePiece = new component(30, 30, "images/gamepiece.jpg", 10, 120, "image");
 		          
 		          myScore = new component("30px", "Consolas", "black", 420, 40, "text");
 		          myGameArea.start();
@@ -82,6 +90,10 @@
 		      
 		      function component(width, height, color, x, y, type) {
 		          this.type = type;
+		          if (type == "image") {
+				    this.image = new Image();
+				    this.image.src = color;
+				  }
 		          this.score = 0;
 		          this.width = width;
 		          this.height = height;
@@ -93,14 +105,15 @@
 		          this.gravitySpeed = 0;
 		          this.update = function() {
 		              ctx = myGameArea.context;
-		              if (this.type == "text") {
-		                  ctx.font = this.width + " " + this.height;
-		                  ctx.fillStyle = color;
-		                  ctx.fillText(this.text, this.x, this.y);
-		              } else {
-		                  ctx.fillStyle = color;
-		                  ctx.fillRect(this.x, this.y, this.width, this.height);
-		              }
+		              if (type == "image") {
+					      ctx.drawImage(this.image,
+					        this.x,
+					        this.y,
+					        this.width, this.height);
+					    } else {
+					      ctx.fillStyle = color;
+					      ctx.fillRect(this.x, this.y, this.width, this.height);
+					    }
 		          }
 		          this.newPos = function() {
 		              this.x += this.speedX;
@@ -192,17 +205,21 @@
 			    myGamePiece.speedX += 2;
 			  }
 			</script>
-
+			
 		</main>
 
 		<footer>
 			<p><a href="mailto:peter.rodeheffer@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a> <span class="bullelement"> &bull; </span>
-			<a href="tef:5072618874"><i class="fa fa-phone" aria-hidden="true"></i></a> <span class="bullelement"> &bull; </span>
-			<a href="sms:5072618874"><i class="fa fa-comment" aria-hidden="true"></i></a> <span class="bullelement"> &bull; </span>
 			<a href="https://github.com/belowpar"><i class="fa fa-github" aria-hidden="true"></i></a>
 			</p>
 			<small>&copy; Peter Rodeheffer. All rights reserved.</small>
 		</footer>
+
+		<!--jQuery, Popper, and Bootstrap Javascript files-->
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
 
 	</body>
 
